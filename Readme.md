@@ -5,43 +5,40 @@ Steps:
 1) Created a folder called ni_final in the Desktop. Then using the `virtualenv`
   command create a virtual environment for this python based project.
 
- [kuvivek@vivekcentos ni_final]$ virtualenv rest_api 
+>  [kuvivek@vivekcentos ni_final]$ virtualenv rest_api
 
 Note: `virtualenv` command is available by executing the following command 
  
 
-    [kuvivek@vivekcentos ni_final]$
-    [kuvivek@vivekcentos ni_final]$ sudo pip install virtualenv
-    [kuvivek@vivekcentos ni_final]$
+>     [kuvivek@vivekcentos ni_final]$
+>     [kuvivek@vivekcentos ni_final]$ sudo pip install virtualenv
+>     [kuvivek@vivekcentos ni_final]$
 
 2) Once the virtual environment is created it is required to activate the 
 virtual environment. The command to activate the same is:
 
-    [kuvivek@vivekcentos ni_final]$
-    [kuvivek@vivekcentos ni_final]$ source rest_api/bin/activate
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-
-    (rest_api) [kuvivek@vivekcentos ni_final]$ which python
-    ~/Desktop/ni_final/rest_api/bin/python
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ python --version
-    Python 2.7.5
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     [kuvivek@vivekcentos ni_final]$
+>     [kuvivek@vivekcentos ni_final]$ source rest_api/bin/activate
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+> 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ which python
+>     ~/Desktop/ni_final/rest_api/bin/python
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ python --version
+>     Python 2.7.5
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
 3) After developing the REST-API Backend framework 
 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ ls
-    app.py  chores-collection.db  database_setup.py  database_setup.pyc  __init__.py  populate_db.py  populate_db.pyc  Readme.txt  resources.py  resources.pyc  rest_api
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ ls
+>     app.py  chores-collection.db  database_setup.py  database_setup.pyc  __init__.py  populate_db.py  populate_db.pyc 
+>  resources.py  resources.pyc  rest_api
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
- - The flask web based application server need to be started. The
-   starting point of this application server is app.py. end Inorder to
-   start the application  server, so as to expose the sought REST API
-   calls and support the Stanadard  HTTP Headers, following commands is
-   used:
+ - The flask web based application server need to be started. The starting point of this application server is app.py. end Inorder to start the application  server, so as to expose the sought REST API calls and support the Stanadard  HTTP Headers, following commands is used:
 
     (rest_api) [kuvivek@vivekcentos ni_final]$
     (rest_api) [kuvivek@vivekcentos ni_final]$ python app.py
@@ -61,134 +58,139 @@ Before putting it in the docker container It will be changed to 0.0.0.0.
 4) Now run another terminal and execute the curl commands to verify all the Standard HTTP protocols.
 Since there are no records initially, Hence reporting empty list.
 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X GET http://127.0.0.1:5000/keys
-    []
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X GET http://127.0.0.1:5000/keys
+>     []
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
 5) Lets push some data using the POST command
 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -d '{"chore1": "Wake up at 6 in the morning"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/keys
-    {
-      "chore1": "Wake up at 6 in the morning"
-    }
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/keys -d '{"chore2": "Prepare breakfast and lunch box for daughter before 7:00 A.M "}'
-    {
-      "chore2": "Prepare breakfast and lunch box for daughter before 7:00 A.M "
-    }
-    (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -d '{"chore1": "Wake up at 6 in the morning"}' -H "Content-Type: application/json" -X
+>     POST http://127.0.0.1:5000/keys
+>     {
+>       "chore1": "Wake up at 6 in the morning"
+>     }
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/keys -d '{"chore2":
+>     "Prepare breakfast and lunch box for daughter before 7:00 A.M "}'
+>     {
+>       "chore2": "Prepare breakfast and lunch box for daughter before 7:00 A.M "
+>     }
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
 6) Try to post the data for the same key using POST header, which is not supported
 But the same can be achieved via the PUT request.
 
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/keys -d '{"chore2": "Go for morning walk from 7:30 A.M."}'
-    Chore title already exist.
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -H "Content-Type: application/json" -X PUT http://127.0.0.1:5000/keys/chore2 -d '{"chore2": "Go for morning walk from 7:30 A.M."}'
-    Updated the chore with id chore2
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/keys -d '{"chore2":
+>     "Go for morning walk from 7:30 A.M."}'
+>     Chore title already exist.
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -H "Content-Type: application/json" -X PUT http://127.0.0.1:5000/keys/chore2 -d
+>     '{"chore2": "Go for morning walk from 7:30 A.M."}'
+>     Updated the chore with id chore2
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
 7) Now, Query for all the keys, the second one which was modified should be 
 updated one, from the value what was added in Step 5.
 
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl http://127.0.0.1:5000/keys
-    [
-      {
-        "chore1": "Wake up at 6 in the morning"
-      },
-      {
-        "chore2": "Go for morning walk from 7:30 A.M."
-      }
-    ]
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl http://127.0.0.1:5000/keys
+>     [
+>       {
+>         "chore1": "Wake up at 6 in the morning"
+>       },
+>       {
+>         "chore2": "Go for morning walk from 7:30 A.M."
+>       }
+>     ]
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
 8) Now lets add one more chore and then delete that chore.
 
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/keys -d '{"chore3": "Eat breakfast by 8:30."}'
-    {
-      "chore3": "Eat breakfast by 8:30."
-    }
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl http://127.0.0.1:5000/keys
-    [
-      {
-        "chore1": "Wake up at 6 in the morning"
-      },
-      {
-        "chore2": "Go for morning walk from 7:30 A.M."
-      },
-      {
-        "chore3": "Eat breakfast by 8:30."
-      }
-    ]
-
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X DELETE http://127.0.0.1:5000/keys/chore3
-    Removed Chore with id chore3
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl http://127.0.0.1:5000/keys
-    [
-      {
-        "chore1": "Wake up at 6 in the morning"
-      },
-      {
-        "chore2": "Go for morning walk from 7:30 A.M."
-      }
-    ]
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/keys -d '{"chore3":
+>     "Eat breakfast by 8:30."}'
+>     {
+>       "chore3": "Eat breakfast by 8:30."
+>     }
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl http://127.0.0.1:5000/keys
+>     [
+>       {
+>         "chore1": "Wake up at 6 in the morning"
+>       },
+>       {
+>         "chore2": "Go for morning walk from 7:30 A.M."
+>       },
+>       {
+>         "chore3": "Eat breakfast by 8:30."
+>       }
+>     ]
+> 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X DELETE http://127.0.0.1:5000/keys/chore3
+>     Removed Chore with id chore3
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl http://127.0.0.1:5000/keys
+>     [
+>       {
+>         "chore1": "Wake up at 6 in the morning"
+>       },
+>       {
+>         "chore2": "Go for morning walk from 7:30 A.M."
+>       }
+>     ]
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
 9) Verify whether a key exist or not using HEAD HTTP request. Since the REST API Service supported by the 
 flask web application server gives json response in case of success and html error page with failure query.
 Attempting failure request first by looking for record which was deleted in the previous step. 
 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X HEAD -i http://127.0.0.1:5000/keys/chore3
-    HTTP/1.0 200 OK
-    Content-Type: text/html; charset=utf-8
-    Content-Length: 21
-    Server: Werkzeug/0.15.5 Python/2.7.5
-    Date: Fri, 16 Aug 2019 06:53:07 GMT
-    
-    curl: (18) transfer closed with 21 bytes remaining to read
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X HEAD -i http://127.0.0.1:5000/keys/chore3
+>     HTTP/1.0 200 OK
+>     Content-Type: text/html; charset=utf-8
+>     Content-Length: 21
+>     Server: Werkzeug/0.15.5 Python/2.7.5
+>     Date: Fri, 16 Aug 2019 06:53:07 GMT
+>     
+>     curl: (18) transfer closed with 21 bytes remaining to read
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
 10) Trying the HEAD Request with actual record. Here the response type is application/json,
 unlike previous previous response, wherein the response is an html error page.
 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X HEAD -i http://127.0.0.1:5000/keys/chore2
-    HTTP/1.0 200 OK
-    Content-Type: application/json
-    Content-Length: 53
-    Server: Werkzeug/0.15.5 Python/2.7.5
-    Date: Fri, 16 Aug 2019 06:53:15 GMT
-    
-    curl: (18) transfer closed with 53 bytes remaining to read
-    (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ 
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X HEAD -i http://127.0.0.1:5000/keys/chore2
+>     HTTP/1.0 200 OK
+>     Content-Type: application/json
+>     Content-Length: 53
+>     Server: Werkzeug/0.15.5 Python/2.7.5
+>     Date: Fri, 16 Aug 2019 06:53:15 GMT
+>     
+>     curl: (18) transfer closed with 53 bytes remaining to read
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
 
 11) Deleting all the keys.
 
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X DELETE http://127.0.0.1:5000/keys
-    2 records deleted
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$ curl http://127.0.0.1:5000/keys
-    []
-    (rest_api) [kuvivek@vivekcentos ni_final]$
-    (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl -X DELETE http://127.0.0.1:5000/keys
+>     2 records deleted
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$ curl http://127.0.0.1:5000/keys
+>     []
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
+>     (rest_api) [kuvivek@vivekcentos ni_final]$
 
 12) Dockerizing the application.
 Create a Dockerfile and docker-compose.yml file for this flask web application. Install docker engine and docker-compose binary and modify the app.py which is exposing the port 5000 to allow connection from outside container. For this instead of first parameter 127.0.0.1 in the app.run() function, change it to 0.0.0.0. 
